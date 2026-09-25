@@ -1,0 +1,57 @@
+@startuml
+
+scale max 3200 width
+
+!define PAD_H_STAGE <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_GOAL <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_ACTION <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_RESPONSE <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_PROBLEM <size:12><color:#FFE3DF>MMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_SOLUTION <size:12><color:#DDF7E8>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_STAGE_A <size:12><color:#EAF2FF>MMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_GOAL_A <size:12><color:#FFFFFF>MMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_ACTION_A <size:12><color:#FFFFFF>MMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_RESPONSE_A <size:12><color:#FFFFFF>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_PROBLEM_A <size:12><color:#FFF4F2>MMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_SOLUTION_A <size:12><color:#ECF9F2>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_STAGE_B <size:12><color:#E4EEFC>MMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_GOAL_B <size:12><color:#F9FBFE>MMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_ACTION_B <size:12><color:#F9FBFE>MMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_RESPONSE_B <size:12><color:#F9FBFE>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_PROBLEM_B <size:12><color:#FFEEEB>MMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_SOLUTION_B <size:12><color:#E5F6ED>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+
+skinparam backgroundColor #F6F8FB
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam defaultFontColor #26364A
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam roundCorner 18
+skinparam dpi 180
+skinparam noteMargin 22
+skinparam notePadding 20
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #BFCADA
+  FontColor #26364A
+}
+
+title
+  <size:25><color:#1769AA><b>Авито.Кухня</b></color></size>
+  <size:20><b>CJM U3 — Успешное оформление заказа</b></size>
+  <size:13><color:#68788D>Путь пользователя от готовой корзины до подтверждения заказа</color></size>
+end title
+
+note as CJM
+|<#DDEBFF><c>PAD_H_STAGE\n<color:#174E8C><b>ЭТАП</b></color>\nPAD_H_STAGE|<#DDEBFF><c>PAD_H_GOAL\n<color:#174E8C><b>ЦЕЛЬ ПОЛЬЗОВАТЕЛЯ</b></color>\nPAD_H_GOAL|<#DDEBFF><c>PAD_H_ACTION\n<color:#174E8C><b>ДЕЙСТВИЕ ПОЛЬЗОВАТЕЛЯ</b></color>\nPAD_H_ACTION|<#DDEBFF><c>PAD_H_RESPONSE\n<color:#174E8C><b>ОТВЕТ СИСТЕМЫ</b></color>\nPAD_H_RESPONSE|<#FFE3DF><c>PAD_H_PROBLEM\n<color:#A9362B><b>ВОЗМОЖНЫЕ ПРОБЛЕМЫ</b></color>\nPAD_H_PROBLEM|<#DDF7E8><c>PAD_H_SOLUTION\n<color:#18794E><b>ВОЗМОЖНОЕ РЕШЕНИЕ</b></color>\nPAD_H_SOLUTION|
+|<#EAF2FF><c>PAD_STAGE_A\n<color:#1769AA><b>Переход к оформлению</b></color>\nPAD_STAGE_A|<#FFFFFF><c>PAD_GOAL_A\nСоздать заказ\nиз текущей корзины\nPAD_GOAL_A|<#FFFFFF><c>PAD_ACTION_A\nОткрывает корзину\nи нажимает «Оформить заказ»\nPAD_ACTION_A|<#FFFFFF><c>PAD_RESPONSE_A\nПринимает запрос\nи начинает оформление\nкорзины заведения\nPAD_RESPONSE_A|<#FFF4F2><c>PAD_PROBLEM_A\nКорзина пуста или\nзаведение неактивно\nPAD_PROBLEM_A|<#ECF9F2><c>PAD_SOLUTION_A\nПроверить корзину и активность\nзаведения; вернуть\nпонятную ошибку\nPAD_SOLUTION_A|
+|<#E4EEFC><c>PAD_STAGE_B\n<color:#1769AA><b>Проверка корзины</b></color>\nPAD_STAGE_B|<#F9FBFE><c>PAD_GOAL_B\nУбедиться в актуальности\nусловий заказа\nPAD_GOAL_B|<#F9FBFE><c>PAD_ACTION_B\nОжидает результат\nпроверки корзины\nPAD_ACTION_B|<#F9FBFE><c>PAD_RESPONSE_B\nПроверяет цены, доступность\nи остатки товаров\nPAD_RESPONSE_B|<#FFEEEB><c>PAD_PROBLEM_B\nТовар недоступен, изменилась\nцена или недостаточно остатка\nPAD_PROBLEM_B|<#E5F6ED><c>PAD_SOLUTION_B\nНе создавать заказ,\nвернуть понятную ошибку\nPAD_SOLUTION_B|
+|<#EAF2FF><c>PAD_STAGE_A\n<color:#1769AA><b>Создание заказа</b></color>\nPAD_STAGE_A|<#FFFFFF><c>PAD_GOAL_A\nПолучить уникальный\nподтверждённый заказ\nPAD_GOAL_A|<#FFFFFF><c>PAD_ACTION_A\nОжидает создание\nзаказа\nPAD_ACTION_A|<#FFFFFF><c>PAD_RESPONSE_A\nСоздаёт заказ с уникальным\nидентификатором\nи статусом created\nPAD_RESPONSE_A|<#FFF4F2><c>PAD_PROBLEM_A\nДва запроса одновременно\nоформляют одну корзину\nPAD_PROBLEM_A|<#ECF9F2><c>PAD_SOLUTION_A\nЗаблокировать корзину; создать\nзаказ и очистить её атомарно\nв одной транзакции\nPAD_SOLUTION_A|
+|<#E4EEFC><c>PAD_STAGE_B\n<color:#1769AA><b>Передача заведению</b></color>\nPAD_STAGE_B|<#F9FBFE><c>PAD_GOAL_B\nПередать заказ\nна исполнение\nPAD_GOAL_B|<#F9FBFE><c>PAD_ACTION_B\nОжидает подтверждение\nот системы\nPAD_ACTION_B|<#F9FBFE><c>PAD_RESPONSE_B\nПередаёт заказ\nсервису заведения\nPAD_RESPONSE_B|<#FFEEEB><c>PAD_PROBLEM_B\nСервис заведения\nвременно недоступен\nPAD_PROBLEM_B|<#E5F6ED><c>PAD_SOLUTION_B\nСохранить заказ и\nповторять передачу\nасинхронно\nPAD_SOLUTION_B|
+|<#EAF2FF><c>PAD_STAGE_A\n<color:#1769AA><b>Подтверждение</b></color>\nPAD_STAGE_A|<#FFFFFF><c>PAD_GOAL_A\nУвидеть результат\nоформления\nPAD_GOAL_A|<#FFFFFF><c>PAD_ACTION_A\nПросматривает экран\nстатуса заказа\nPAD_ACTION_A|<#FFFFFF><c>PAD_RESPONSE_A\nПоказывает номер заказа,\nитоговую сумму\nи текущий статус\nPAD_RESPONSE_A|<#FFF4F2><c>PAD_PROBLEM_A\nСтраница не загрузилась\nPAD_PROBLEM_A|<#ECF9F2><c>PAD_SOLUTION_A\nСохранить созданный заказ,\nдать повторно открыть его\nиз списка заказов\nPAD_SOLUTION_A|
+end note
+
+caption <size:16><color:#42566E><b>Результат:</b> заказ создан ровно один раз, сохранён и поставлен на обработку заведением</color></size>
+
+@enduml

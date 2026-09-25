@@ -1,0 +1,854 @@
+definitions:
+  core_response.Error:
+    properties:
+      code:
+        example: invalid request
+        type: string
+      message:
+        example: invalid companyId path parameter
+        type: string
+    type: object
+  core_response.ErrorResponse:
+    properties:
+      error:
+        $ref: '#/definitions/core_response.Error'
+    type: object
+  dto.BasketProductDto:
+    properties:
+      chosen_count:
+        example: 2
+        type: integer
+      current_count:
+        example: 18
+        type: integer
+      description:
+        example: Томатный соус, моцарелла, томаты и базилик
+        type: string
+      id:
+        example: 33333333-3333-4333-8333-000000000001
+        type: string
+      is_available:
+        example: true
+        type: boolean
+      last_confirmed_price:
+        example: 49900
+        type: integer
+      name:
+        example: Пицца Маргарита
+        type: string
+      price:
+        example: 49900
+        type: integer
+    type: object
+  dto.ChangeOrderStatusRequest:
+    properties:
+      status:
+        enum:
+        - created
+        - rejected
+        - accepted
+        - preparing
+        - completed
+        example: accepted
+        type: string
+    required:
+    - status
+    type: object
+  dto.CompanyDto:
+    properties:
+      id:
+        example: 11111111-1111-4111-8111-111111111111
+        type: string
+      is_active:
+        example: true
+        type: boolean
+      name:
+        example: Demo company
+        type: string
+    type: object
+  dto.CompanyProductDto:
+    properties:
+      current_count:
+        example: 18
+        type: integer
+      description:
+        example: Томатный соус, моцарелла, томаты и базилик
+        type: string
+      id:
+        example: 33333333-3333-4333-8333-000000000001
+        type: string
+      is_available:
+        example: true
+        type: boolean
+      name:
+        example: Пицца Маргарита
+        type: string
+      partner_product_id:
+        example: pizza-margherita
+        type: string
+      price:
+        example: 49900
+        type: integer
+    type: object
+  dto.ConfirmProductsPriceRequest:
+    properties:
+      products:
+        items:
+          $ref: '#/definitions/dto.ProductPriceRequest'
+        minItems: 1
+        type: array
+    required:
+    - products
+    type: object
+  dto.CreateCompanyProductRequest:
+    properties:
+      current_count:
+        example: 18
+        minimum: 0
+        type: integer
+      description:
+        example: Томатный соус, моцарелла, томаты и базилик
+        maxLength: 255
+        type: string
+      name:
+        example: Пицца Маргарита
+        maxLength: 255
+        type: string
+      partner_product_id:
+        example: pizza-margherita
+        maxLength: 255
+        type: string
+      price:
+        example: 49900
+        type: integer
+    required:
+    - name
+    - partner_product_id
+    - price
+    type: object
+  dto.CreateOrderRequest:
+    properties:
+      products:
+        items:
+          $ref: '#/definitions/dto.ProductPriceRequest'
+        minItems: 1
+        type: array
+    required:
+    - products
+    type: object
+  dto.GetCompaniesResponse:
+    properties:
+      companies:
+        items:
+          $ref: '#/definitions/dto.CompanyDto'
+        type: array
+    type: object
+  dto.GetCompanyProductsResponse:
+    properties:
+      products:
+        items:
+          $ref: '#/definitions/dto.ProductDto'
+        type: array
+    type: object
+  dto.GetMyOrdersResponse:
+    properties:
+      orders:
+        items:
+          $ref: '#/definitions/dto.OrderDto'
+        type: array
+    type: object
+  dto.OrderDto:
+    properties:
+      company_id:
+        example: 11111111-1111-4111-8111-111111111111
+        type: string
+      created_at:
+        example: "2026-09-08T12:00:00Z"
+        type: string
+      full_price:
+        example: 99800
+        type: integer
+      id:
+        example: 44444444-4444-4444-8444-444444444444
+        type: string
+      products:
+        items:
+          $ref: '#/definitions/dto.OrderProductDto'
+        type: array
+      rejection_reason:
+        example: Недостаточно товара
+        type: string
+      status:
+        enum:
+        - created
+        - rejected
+        - accepted
+        - preparing
+        - completed
+        example: accepted
+        type: string
+      updated_at:
+        example: "2026-09-08T12:05:00Z"
+        type: string
+    type: object
+  dto.OrderProductDto:
+    properties:
+      count:
+        example: 2
+        type: integer
+      id:
+        example: 33333333-3333-4333-8333-000000000001
+        type: string
+      name:
+        example: Пицца Маргарита
+        type: string
+      price:
+        example: 49900
+        type: integer
+    type: object
+  dto.PatchCompanyProductRequest:
+    properties:
+      current_count:
+        example: 18
+        minimum: 0
+        type: integer
+      description:
+        example: Томатный соус, моцарелла, томаты и базилик
+        maxLength: 255
+        type: string
+      is_available:
+        example: true
+        type: boolean
+      name:
+        example: Пицца Маргарита
+        maxLength: 255
+        type: string
+      price:
+        example: 49900
+        type: integer
+    type: object
+  dto.ProductDto:
+    properties:
+      description:
+        example: Томатный соус, моцарелла, томаты и базилик
+        type: string
+      id:
+        example: 33333333-3333-4333-8333-000000000001
+        type: string
+      is_available:
+        example: true
+        type: boolean
+      name:
+        example: Пицца Маргарита
+        type: string
+      price:
+        example: 49900
+        type: integer
+    type: object
+  dto.ProductPriceRequest:
+    properties:
+      id:
+        example: 33333333-3333-4333-8333-000000000001
+        type: string
+      price:
+        example: 49900
+        type: integer
+    required:
+    - id
+    - price
+    type: object
+  dto.PutBasketProductRequest:
+    properties:
+      count:
+        example: 2
+        type: integer
+    required:
+    - count
+    type: object
+  dto.UserBasketDto:
+    properties:
+      full_confirmed_price:
+        example: 99800
+        type: integer
+      full_price:
+        example: 99800
+        type: integer
+      products:
+        items:
+          $ref: '#/definitions/dto.BasketProductDto'
+        type: array
+    type: object
+info:
+  contact: {}
+  description: API сервиса Avito Kitchen.
+  title: Avito Kitchen API
+  version: "1.0"
+paths:
+  /api/v1/companies:
+    get:
+      description: Returns all companies available in the service.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GetCompaniesResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: List companies
+      tags:
+      - Menu
+  /api/v1/companies/{companyId}/basket:
+    get:
+      description: Returns the authenticated user basket and its current and confirmed
+        totals.
+      parameters:
+      - description: User UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Company UUID
+        format: uuid
+        in: path
+        name: companyId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserBasketDto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Get basket
+      tags:
+      - Basket
+  /api/v1/companies/{companyId}/basket/items/{productId}:
+    delete:
+      description: Removes the specified product from the authenticated user basket.
+      parameters:
+      - description: User UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Company UUID
+        format: uuid
+        in: path
+        name: companyId
+        required: true
+        type: string
+      - description: Product UUID
+        format: uuid
+        in: path
+        name: productId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Delete basket product
+      tags:
+      - Basket
+    put:
+      consumes:
+      - application/json
+      description: Sets the requested quantity of a product in the authenticated user
+        basket.
+      parameters:
+      - description: User UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Company UUID
+        format: uuid
+        in: path
+        name: companyId
+        required: true
+        type: string
+      - description: Product UUID
+        format: uuid
+        in: path
+        name: productId
+        required: true
+        type: string
+      - description: Product quantity
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PutBasketProductRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Add or update basket product
+      tags:
+      - Basket
+  /api/v1/companies/{companyId}/basket/price-confirmation:
+    patch:
+      consumes:
+      - application/json
+      description: Confirms current prices and returns the updated basket products.
+      parameters:
+      - description: User UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Company UUID
+        format: uuid
+        in: path
+        name: companyId
+        required: true
+        type: string
+      - description: Products and expected prices
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ConfirmProductsPriceRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.BasketProductDto'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Confirm basket prices
+      tags:
+      - Basket
+  /api/v1/companies/{companyId}/orders:
+    post:
+      consumes:
+      - application/json
+      description: Creates an order after validating the basket contents and confirmed
+        prices.
+      parameters:
+      - description: User UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Company UUID
+        format: uuid
+        in: path
+        name: companyId
+        required: true
+        type: string
+      - description: Products and confirmed prices
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateOrderRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Create order
+      tags:
+      - Orders
+  /api/v1/companies/{companyId}/products:
+    get:
+      description: Returns all products belonging to the specified company.
+      parameters:
+      - description: Company UUID
+        format: uuid
+        in: path
+        name: companyId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GetCompanyProductsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: List company products
+      tags:
+      - Menu
+  /api/v1/company/orders/{orderId}/status:
+    patch:
+      consumes:
+      - application/json
+      description: Changes the status of an order belonging to the authenticated company.
+      parameters:
+      - description: Company UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Order UUID
+        format: uuid
+        in: path
+        name: orderId
+        required: true
+        type: string
+      - description: New order status
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ChangeOrderStatusRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.OrderDto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Change company order status
+      tags:
+      - Company
+  /api/v1/company/products:
+    post:
+      consumes:
+      - application/json
+      description: Creates a product owned by the company identified by the Authorization
+        header.
+      parameters:
+      - description: Company UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Product data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCompanyProductRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.CompanyProductDto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Create company product
+      tags:
+      - Company
+  /api/v1/company/products/{partnerProductId}:
+    patch:
+      consumes:
+      - application/json
+      description: Partially updates a product selected by its partner product identifier.
+      parameters:
+      - description: Company UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Partner product ID
+        in: path
+        name: partnerProductId
+        required: true
+        type: string
+      - description: Product fields to update
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PatchCompanyProductRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CompanyProductDto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Update company product
+      tags:
+      - Company
+  /api/v1/orders/{orderId}:
+    get:
+      description: Returns an order when it belongs to the authenticated user.
+      parameters:
+      - description: User UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Order UUID
+        format: uuid
+        in: path
+        name: orderId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.OrderDto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Get my order
+      tags:
+      - Orders
+  /api/v1/orders/my:
+    get:
+      description: Returns all orders belonging to the authenticated user.
+      parameters:
+      - description: User UUID
+        format: uuid
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GetMyOrdersResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: List my orders
+      tags:
+      - Orders
+  /api/v1/products/{productId}:
+    get:
+      description: Returns a single product by UUID.
+      parameters:
+      - description: Product UUID
+        format: uuid
+        in: path
+        name: productId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ProductDto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/core_response.ErrorResponse'
+      summary: Get product
+      tags:
+      - Menu
+swagger: "2.0"

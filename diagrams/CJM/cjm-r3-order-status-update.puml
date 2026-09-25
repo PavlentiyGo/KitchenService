@@ -1,0 +1,56 @@
+@startuml
+
+scale max 3200 width
+
+!define PAD_H_STAGE <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_GOAL <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_ACTION <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_RESPONSE <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_PROBLEM <size:12><color:#FFE3DF>MMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_SOLUTION <size:12><color:#DDF7E8>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_STAGE_A <size:12><color:#EAF2FF>MMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_GOAL_A <size:12><color:#FFFFFF>MMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_ACTION_A <size:12><color:#FFFFFF>MMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_RESPONSE_A <size:12><color:#FFFFFF>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_PROBLEM_A <size:12><color:#FFF4F2>MMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_SOLUTION_A <size:12><color:#ECF9F2>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_STAGE_B <size:12><color:#E4EEFC>MMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_GOAL_B <size:12><color:#F9FBFE>MMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_ACTION_B <size:12><color:#F9FBFE>MMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_RESPONSE_B <size:12><color:#F9FBFE>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_PROBLEM_B <size:12><color:#FFEEEB>MMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_SOLUTION_B <size:12><color:#E5F6ED>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+
+skinparam backgroundColor #F6F8FB
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam defaultFontColor #26364A
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam roundCorner 18
+skinparam dpi 180
+skinparam noteMargin 22
+skinparam notePadding 20
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #BFCADA
+  FontColor #26364A
+}
+
+title
+  <size:25><color:#1769AA><b>Авито.Кухня</b></color></size>
+  <size:20><b>CJM R3 — Изменение статуса заказа</b></size>
+  <size:13><color:#68788D>Путь заведения от начала выполнения заказа до его завершения</color></size>
+end title
+
+note as CJM
+|<#DDEBFF><c>PAD_H_STAGE\n<color:#174E8C><b>ЭТАП</b></color>\nPAD_H_STAGE|<#DDEBFF><c>PAD_H_GOAL\n<color:#174E8C><b>ЦЕЛЬ ЗАВЕДЕНИЯ</b></color>\nPAD_H_GOAL|<#DDEBFF><c>PAD_H_ACTION\n<color:#174E8C><b>ДЕЙСТВИЕ ЗАВЕДЕНИЯ</b></color>\nPAD_H_ACTION|<#DDEBFF><c>PAD_H_RESPONSE\n<color:#174E8C><b>ОТВЕТ СИСТЕМЫ</b></color>\nPAD_H_RESPONSE|<#FFE3DF><c>PAD_H_PROBLEM\n<color:#A9362B><b>ВОЗМОЖНЫЕ ПРОБЛЕМЫ</b></color>\nPAD_H_PROBLEM|<#DDF7E8><c>PAD_H_SOLUTION\n<color:#18794E><b>ВОЗМОЖНОЕ РЕШЕНИЕ</b></color>\nPAD_H_SOLUTION|
+|<#EAF2FF><c>PAD_STAGE_A\n<color:#1769AA><b>Начало выполнения</b></color>\nPAD_STAGE_A|<#FFFFFF><c>PAD_GOAL_A\nЗафиксировать начало\nработы над заказом\nPAD_GOAL_A|<#FFFFFF><c>PAD_ACTION_A\nПереводит принятый заказ\nиз accepted в preparing\nPAD_ACTION_A|<#FFFFFF><c>PAD_RESPONSE_A\nПроверяет переход,\nсохраняет статус\nи время изменения\nPAD_RESPONSE_A|<#FFF4F2><c>PAD_PROBLEM_A\nЗаказ не находится\nв статусе accepted\nPAD_PROBLEM_A|<#ECF9F2><c>PAD_SOLUTION_A\nОтклонить переход;\nвернуть текущее\nсостояние заказа\nPAD_SOLUTION_A|
+|<#E4EEFC><c>PAD_STAGE_B\n<color:#1769AA><b>Проверка перехода</b></color>\nPAD_STAGE_B|<#F9FBFE><c>PAD_GOAL_B\nНе нарушить порядок\nобработки заказа\nPAD_GOAL_B|<#F9FBFE><c>PAD_ACTION_B\nОтправляет изменение\nстатуса\nPAD_ACTION_B|<#F9FBFE><c>PAD_RESPONSE_B\nПроверяет допустимость перехода\nи идентификатор заказа,\nвыданный Авито.Кухней\nPAD_RESPONSE_B|<#FFEEEB><c>PAD_PROBLEM_B\nПовторно отправлен\nтот же статус\nPAD_PROBLEM_B|<#E5F6ED><c>PAD_SOLUTION_B\nВернуть текущее состояние\nбез новой записи в истории\nи побочных эффектов\nPAD_SOLUTION_B|
+|<#EAF2FF><c>PAD_STAGE_A\n<color:#1769AA><b>Завершение заказа</b></color>\nPAD_STAGE_A|<#FFFFFF><c>PAD_GOAL_A\nЗафиксировать завершение\nвыполнения заказа\nPAD_GOAL_A|<#FFFFFF><c>PAD_ACTION_A\nПереводит заказ\nиз preparing в completed\nPAD_ACTION_A|<#FFFFFF><c>PAD_RESPONSE_A\nСохраняет конечный статус\nи время его установки,\nпоказывает их пользователю\nPAD_RESPONSE_A|<#FFF4F2><c>PAD_PROBLEM_A\nСобытие пришло не по порядку\nили заказ уже завершён\nPAD_PROBLEM_A|<#ECF9F2><c>PAD_SOLUTION_A\nПринять только допустимый\nследующий переход; иначе\nвернуть текущее состояние\nPAD_SOLUTION_A|
+|<#E4EEFC><c>PAD_STAGE_B\n<color:#1769AA><b>История статусов</b></color>\nPAD_STAGE_B|<#F9FBFE><c>PAD_GOAL_B\nУбедиться, что изменения\nсохранены\nPAD_GOAL_B|<#F9FBFE><c>PAD_ACTION_B\nЗавершает обновление\nзаказа\nPAD_ACTION_B|<#F9FBFE><c>PAD_RESPONSE_B\nХранит последовательность\nстатусов и показывает\nпоследнее допустимое состояние\nPAD_RESPONSE_B|<#FFEEEB><c>PAD_PROBLEM_B\nИстория и текущий статус\nрасходятся\nPAD_PROBLEM_B|<#E5F6ED><c>PAD_SOLUTION_B\nОбновлять текущий статус\nи историю атомарно\nв одной транзакции\nPAD_SOLUTION_B|
+end note
+
+caption <size:16><color:#42566E><b>Результат:</b> история статусов сохранена, а пользователь видит последнее допустимое состояние заказа.</color></size>
+
+@enduml

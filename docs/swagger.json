@@ -1,0 +1,1240 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API сервиса Avito Kitchen.",
+        "title": "Avito Kitchen API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/companies": {
+            "get": {
+                "description": "Returns all companies available in the service.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "List companies",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GetCompaniesResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/companies/{companyId}/basket": {
+            "get": {
+                "description": "Returns the authenticated user basket and its current and confirmed totals.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Basket"
+                ],
+                "summary": "Get basket",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "User UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Company UUID",
+                        "name": "companyId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserBasketDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/companies/{companyId}/basket/items/{productId}": {
+            "put": {
+                "description": "Sets the requested quantity of a product in the authenticated user basket.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Basket"
+                ],
+                "summary": "Add or update basket product",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "User UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Company UUID",
+                        "name": "companyId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Product UUID",
+                        "name": "productId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Product quantity",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PutBasketProductRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Removes the specified product from the authenticated user basket.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Basket"
+                ],
+                "summary": "Delete basket product",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "User UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Company UUID",
+                        "name": "companyId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Product UUID",
+                        "name": "productId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/companies/{companyId}/basket/price-confirmation": {
+            "patch": {
+                "description": "Confirms current prices and returns the updated basket products.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Basket"
+                ],
+                "summary": "Confirm basket prices",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "User UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Company UUID",
+                        "name": "companyId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Products and expected prices",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ConfirmProductsPriceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dto.BasketProductDto"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/companies/{companyId}/orders": {
+            "post": {
+                "description": "Creates an order after validating the basket contents and confirmed prices.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Create order",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "User UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Company UUID",
+                        "name": "companyId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Products and confirmed prices",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateOrderRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/companies/{companyId}/products": {
+            "get": {
+                "description": "Returns all products belonging to the specified company.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "List company products",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Company UUID",
+                        "name": "companyId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GetCompanyProductsResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/company/orders/{orderId}/status": {
+            "patch": {
+                "description": "Changes the status of an order belonging to the authenticated company.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Change company order status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Company UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Order UUID",
+                        "name": "orderId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "New order status",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ChangeOrderStatusRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.OrderDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/company/products": {
+            "post": {
+                "description": "Creates a product owned by the company identified by the Authorization header.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Create company product",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Company UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Product data",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateCompanyProductRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/dto.CompanyProductDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/company/products/{partnerProductId}": {
+            "patch": {
+                "description": "Partially updates a product selected by its partner product identifier.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Update company product",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Company UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Partner product ID",
+                        "name": "partnerProductId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Product fields to update",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PatchCompanyProductRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.CompanyProductDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/my": {
+            "get": {
+                "description": "Returns all orders belonging to the authenticated user.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "List my orders",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "User UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.GetMyOrdersResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/{orderId}": {
+            "get": {
+                "description": "Returns an order when it belongs to the authenticated user.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get my order",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "User UUID",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Order UUID",
+                        "name": "orderId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.OrderDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/products/{productId}": {
+            "get": {
+                "description": "Returns a single product by UUID.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "Get product",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Product UUID",
+                        "name": "productId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ProductDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/core_response.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "core_response.Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "example": "invalid request"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "invalid companyId path parameter"
+                }
+            }
+        },
+        "core_response.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "$ref": "#/definitions/core_response.Error"
+                }
+            }
+        },
+        "dto.BasketProductDto": {
+            "type": "object",
+            "properties": {
+                "chosen_count": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "current_count": {
+                    "type": "integer",
+                    "example": 18
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Томатный соус, моцарелла, томаты и базилик"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "33333333-3333-4333-8333-000000000001"
+                },
+                "is_available": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "last_confirmed_price": {
+                    "type": "integer",
+                    "example": 49900
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Пицца Маргарита"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": 49900
+                }
+            }
+        },
+        "dto.ChangeOrderStatusRequest": {
+            "type": "object",
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "created",
+                        "rejected",
+                        "accepted",
+                        "preparing",
+                        "completed"
+                    ],
+                    "example": "accepted"
+                }
+            }
+        },
+        "dto.CompanyDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "11111111-1111-4111-8111-111111111111"
+                },
+                "is_active": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Demo company"
+                }
+            }
+        },
+        "dto.CompanyProductDto": {
+            "type": "object",
+            "properties": {
+                "current_count": {
+                    "type": "integer",
+                    "example": 18
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Томатный соус, моцарелла, томаты и базилик"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "33333333-3333-4333-8333-000000000001"
+                },
+                "is_available": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Пицца Маргарита"
+                },
+                "partner_product_id": {
+                    "type": "string",
+                    "example": "pizza-margherita"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": 49900
+                }
+            }
+        },
+        "dto.ConfirmProductsPriceRequest": {
+            "type": "object",
+            "required": [
+                "products"
+            ],
+            "properties": {
+                "products": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/dto.ProductPriceRequest"
+                    }
+                }
+            }
+        },
+        "dto.CreateCompanyProductRequest": {
+            "type": "object",
+            "required": [
+                "name",
+                "partner_product_id",
+                "price"
+            ],
+            "properties": {
+                "current_count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "example": 18
+                },
+                "description": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "Томатный соус, моцарелла, томаты и базилик"
+                },
+                "name": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "Пицца Маргарита"
+                },
+                "partner_product_id": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "pizza-margherita"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": 49900
+                }
+            }
+        },
+        "dto.CreateOrderRequest": {
+            "type": "object",
+            "required": [
+                "products"
+            ],
+            "properties": {
+                "products": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/dto.ProductPriceRequest"
+                    }
+                }
+            }
+        },
+        "dto.GetCompaniesResponse": {
+            "type": "object",
+            "properties": {
+                "companies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.CompanyDto"
+                    }
+                }
+            }
+        },
+        "dto.GetCompanyProductsResponse": {
+            "type": "object",
+            "properties": {
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.ProductDto"
+                    }
+                }
+            }
+        },
+        "dto.GetMyOrdersResponse": {
+            "type": "object",
+            "properties": {
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.OrderDto"
+                    }
+                }
+            }
+        },
+        "dto.OrderDto": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "string",
+                    "example": "11111111-1111-4111-8111-111111111111"
+                },
+                "created_at": {
+                    "type": "string",
+                    "example": "2026-09-08T12:00:00Z"
+                },
+                "full_price": {
+                    "type": "integer",
+                    "example": 99800
+                },
+                "id": {
+                    "type": "string",
+                    "example": "44444444-4444-4444-8444-444444444444"
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.OrderProductDto"
+                    }
+                },
+                "rejection_reason": {
+                    "type": "string",
+                    "example": "Недостаточно товара"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "created",
+                        "rejected",
+                        "accepted",
+                        "preparing",
+                        "completed"
+                    ],
+                    "example": "accepted"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "example": "2026-09-08T12:05:00Z"
+                }
+            }
+        },
+        "dto.OrderProductDto": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "id": {
+                    "type": "string",
+                    "example": "33333333-3333-4333-8333-000000000001"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Пицца Маргарита"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": 49900
+                }
+            }
+        },
+        "dto.PatchCompanyProductRequest": {
+            "type": "object",
+            "properties": {
+                "current_count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "example": 18
+                },
+                "description": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "Томатный соус, моцарелла, томаты и базилик"
+                },
+                "is_available": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "name": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "example": "Пицца Маргарита"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": 49900
+                }
+            }
+        },
+        "dto.ProductDto": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "example": "Томатный соус, моцарелла, томаты и базилик"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "33333333-3333-4333-8333-000000000001"
+                },
+                "is_available": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Пицца Маргарита"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": 49900
+                }
+            }
+        },
+        "dto.ProductPriceRequest": {
+            "type": "object",
+            "required": [
+                "id",
+                "price"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "33333333-3333-4333-8333-000000000001"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": 49900
+                }
+            }
+        },
+        "dto.PutBasketProductRequest": {
+            "type": "object",
+            "required": [
+                "count"
+            ],
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "example": 2
+                }
+            }
+        },
+        "dto.UserBasketDto": {
+            "type": "object",
+            "properties": {
+                "full_confirmed_price": {
+                    "type": "integer",
+                    "example": 99800
+                },
+                "full_price": {
+                    "type": "integer",
+                    "example": 99800
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.BasketProductDto"
+                    }
+                }
+            }
+        }
+    }
+}

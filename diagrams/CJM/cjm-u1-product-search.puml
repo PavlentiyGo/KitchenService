@@ -1,0 +1,58 @@
+@startuml
+
+scale max 3200 width
+
+!define PAD_H_STAGE <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_GOAL <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_ACTION <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_RESPONSE <size:12><color:#DDEBFF>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_PROBLEM <size:12><color:#FFE3DF>MMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_H_SOLUTION <size:12><color:#DDF7E8>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_STAGE_A <size:12><color:#EAF2FF>MMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_GOAL_A <size:12><color:#FFFFFF>MMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_ACTION_A <size:12><color:#FFFFFF>MMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_RESPONSE_A <size:12><color:#FFFFFF>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_PROBLEM_A <size:12><color:#FFF4F2>MMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_SOLUTION_A <size:12><color:#ECF9F2>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_STAGE_B <size:12><color:#E4EEFC>MMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_GOAL_B <size:12><color:#F9FBFE>MMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_ACTION_B <size:12><color:#F9FBFE>MMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_RESPONSE_B <size:12><color:#F9FBFE>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_PROBLEM_B <size:12><color:#FFEEEB>MMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+!define PAD_SOLUTION_B <size:12><color:#E5F6ED>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</color></size>
+
+skinparam backgroundColor #F6F8FB
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam defaultFontColor #26364A
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam roundCorner 18
+skinparam dpi 180
+skinparam noteMargin 22
+skinparam notePadding 20
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #BFCADA
+  FontColor #26364A
+}
+
+title
+  <size:25><color:#1769AA><b>Авито.Кухня</b></color></size>
+  <size:20><b>CJM U1 — Поиск и просмотр товара</b></size>
+  <size:13><color:#68788D>Путь пользователя от входа в сервис до карточки товара</color></size>
+end title
+
+note as CJM
+|<#DDEBFF><c>PAD_H_STAGE\n<color:#174E8C><b>ЭТАП</b></color>\nPAD_H_STAGE|<#DDEBFF><c>PAD_H_GOAL\n<color:#174E8C><b>ЦЕЛЬ ПОЛЬЗОВАТЕЛЯ</b></color>\nPAD_H_GOAL|<#DDEBFF><c>PAD_H_ACTION\n<color:#174E8C><b>ДЕЙСТВИЕ ПОЛЬЗОВАТЕЛЯ</b></color>\nPAD_H_ACTION|<#DDEBFF><c>PAD_H_RESPONSE\n<color:#174E8C><b>ОТВЕТ СИСТЕМЫ</b></color>\nPAD_H_RESPONSE|<#FFE3DF><c>PAD_H_PROBLEM\n<color:#A9362B><b>ВОЗМОЖНЫЕ ПРОБЛЕМЫ</b></color>\nPAD_H_PROBLEM|<#DDF7E8><c>PAD_H_SOLUTION\n<color:#18794E><b>ВОЗМОЖНОЕ РЕШЕНИЕ</b></color>\nPAD_H_SOLUTION|
+|<#EAF2FF><c>PAD_STAGE_A\n<color:#1769AA><b>Вход в сервис</b></color>\nPAD_STAGE_A|<#FFFFFF><c>PAD_GOAL_A\nНачать поиск еды\nили товаров\nPAD_GOAL_A|<#FFFFFF><c>PAD_ACTION_A\nОткрывает раздел\n«Авито.Кухня»\nPAD_ACTION_A|<#FFFFFF><c>PAD_RESPONSE_A\nОткрывает главную страницу\nи начинает загрузку\nдоступных заведений\nPAD_RESPONSE_A|<#FFF4F2><c>PAD_PROBLEM_A\nСервис или данные\nне загрузились\nPAD_PROBLEM_A|<#ECF9F2><c>PAD_SOLUTION_A\nПоказать состояние загрузки,\nпонятное сообщение\nи кнопку «Повторить»\nPAD_SOLUTION_A|
+|<#E4EEFC><c>PAD_STAGE_B\n<color:#1769AA><b>Список заведений</b></color>\nPAD_STAGE_B|<#F9FBFE><c>PAD_GOAL_B\nУвидеть, где можно\nсделать заказ\nPAD_GOAL_B|<#F9FBFE><c>PAD_ACTION_B\nПросматривает список\nдоступных заведений\nPAD_ACTION_B|<#F9FBFE><c>PAD_RESPONSE_B\nПоказывает доступные заведения\nPAD_RESPONSE_B|<#FFEEEB><c>PAD_PROBLEM_B\nНет доступных заведений\nPAD_PROBLEM_B|<#E5F6ED><c>PAD_SOLUTION_B\nПоказать пустое состояние\nPAD_SOLUTION_B|
+|<#EAF2FF><c>PAD_STAGE_A\n<color:#1769AA><b>Выбор заведения</b></color>\nPAD_STAGE_A|<#FFFFFF><c>PAD_GOAL_A\nПерейти к ассортименту\nподходящего заведения\nPAD_GOAL_A|<#FFFFFF><c>PAD_ACTION_A\nВыбирает заведение\nиз списка\nPAD_ACTION_A|<#FFFFFF><c>PAD_RESPONSE_A\nОткрывает страницу заведения\nи начинает загрузку\nактуального меню\nPAD_RESPONSE_A|<#FFF4F2><c>PAD_PROBLEM_A\nСтраница или меню\nне загрузились\nPAD_PROBLEM_A|<#ECF9F2><c>PAD_SOLUTION_A\nПоказать ошибку и действие\n«Повторить загрузку»\nPAD_SOLUTION_A|
+|<#E4EEFC><c>PAD_STAGE_B\n<color:#1769AA><b>Просмотр меню</b></color>\nPAD_STAGE_B|<#F9FBFE><c>PAD_GOAL_B\nОценить ассортимент\nзаведения\nPAD_GOAL_B|<#F9FBFE><c>PAD_ACTION_B\nПросматривает товары меню\nPAD_ACTION_B|<#F9FBFE><c>PAD_RESPONSE_B\nПоказывает актуальные товары,\nих цену и доступность\nPAD_RESPONSE_B|<#FFEEEB><c>PAD_PROBLEM_B\nМеню пусто\nили нет доступных товаров\nPAD_PROBLEM_B|<#E5F6ED><c>PAD_SOLUTION_B\nОбъяснить пустое состояние\nи предложить вернуться\nк списку заведений\nPAD_SOLUTION_B|
+|<#EAF2FF><c>PAD_STAGE_A\n<color:#1769AA><b>Выбор товара</b></color>\nPAD_STAGE_A|<#FFFFFF><c>PAD_GOAL_A\nНайти подходящий\nдоступный товар\nPAD_GOAL_A|<#FFFFFF><c>PAD_ACTION_A\nВыбирает товар\nв меню\nPAD_ACTION_A|<#FFFFFF><c>PAD_RESPONSE_A\nПроверяет актуальность товара\nи открывает его\nкарточку\nPAD_RESPONSE_A|<#FFF4F2><c>PAD_PROBLEM_A\nТовар недоступен\nили только что закончился\nPAD_PROBLEM_A|<#ECF9F2><c>PAD_SOLUTION_A\nОставить товар видимым,\nпоказать статус «Нет в наличии»\nи запретить добавление в корзину\nPAD_SOLUTION_A|
+|<#E4EEFC><c>PAD_STAGE_B\n<color:#1769AA><b>Карточка товара</b></color>\nPAD_STAGE_B|<#F9FBFE><c>PAD_GOAL_B\nИзучить товар\nперед покупкой\nPAD_GOAL_B|<#F9FBFE><c>PAD_ACTION_B\nПросматривает название,\nописание, цену\nи наличие\nPAD_ACTION_B|<#F9FBFE><c>PAD_RESPONSE_B\nПоказывает актуальные\nданные товара и доступность\nдействия «Добавить»\nPAD_RESPONSE_B|<#FFEEEB><c>PAD_PROBLEM_B\nДанные карточки\nустарели или не загрузились\nPAD_PROBLEM_B|<#E5F6ED><c>PAD_SOLUTION_B\nОбновить данные; при ошибке\nсохранить контекст и предложить\nповторить загрузку\nPAD_SOLUTION_B|
+end note
+
+caption <size:16><color:#42566E><b>Результат:</b> пользователь получил актуальную информацию о товаре и может перейти к добавлению в корзину.</color></size>
+
+@enduml
