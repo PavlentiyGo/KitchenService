@@ -1,7 +1,7 @@
 package service_basket_test
 
 import (
-	service_basket "avitoKitchen/internal/service/basket"
+	service_basket "foodDelivery/internal/service/basket"
 	"testing"
 
 	"go.uber.org/mock/gomock"

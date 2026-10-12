@@ -1,7 +1,7 @@
 package core_response
 
 import (
-	core_errors "avitoKitchen/internal/core/errors"
+	core_errors "foodDelivery/internal/core/errors"
 	"net/http"
 )
 

@@ -1,11 +1,11 @@
 package service_companies_test
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	service_companies "avitoKitchen/internal/service/companies"
 	"context"
 	"errors"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	service_companies "foodDelivery/internal/service/companies"
 	"testing"
 
 	"github.com/google/uuid"

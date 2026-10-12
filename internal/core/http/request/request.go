@@ -1,9 +1,9 @@
 package request
 
 import (
-	core_errors "avitoKitchen/internal/core/errors"
 	"encoding/json"
 	"fmt"
+	core_errors "foodDelivery/internal/core/errors"
 	"net/http"
 
 	"github.com/google/uuid"

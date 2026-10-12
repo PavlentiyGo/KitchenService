@@ -1,34 +1,34 @@
 package e2e
 
 import (
-	core_config "avitoKitchen/internal/core/config"
-	"avitoKitchen/internal/core/domain"
-	http_middleware "avitoKitchen/internal/core/http/middleware"
-	core_server "avitoKitchen/internal/core/http/server"
-	core_logger "avitoKitchen/internal/core/logger"
-	"avitoKitchen/internal/handlers"
-	handler_basket "avitoKitchen/internal/handlers/basket"
-	handler_companies "avitoKitchen/internal/handlers/companies"
-	"avitoKitchen/internal/handlers/dto"
-	handler_menu "avitoKitchen/internal/handlers/menu"
-	handler_orders "avitoKitchen/internal/handlers/orders"
-	"avitoKitchen/internal/repository/postgres"
-	repository_basket "avitoKitchen/internal/repository/postgres/basket"
-	repository_companies "avitoKitchen/internal/repository/postgres/companies"
-	repository_menu "avitoKitchen/internal/repository/postgres/menu"
-	repository_orders "avitoKitchen/internal/repository/postgres/orders"
-	service_basket "avitoKitchen/internal/service/basket"
-	service_companies "avitoKitchen/internal/service/companies"
-	service_menu "avitoKitchen/internal/service/menu"
-	service_orders "avitoKitchen/internal/service/orders"
-	service_worker "avitoKitchen/internal/service/worker"
-	transport_dto "avitoKitchen/internal/transport/http/company"
-	transport_kafka "avitoKitchen/internal/transport/kafka"
 	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
+	core_config "foodDelivery/internal/core/config"
+	"foodDelivery/internal/core/domain"
+	http_middleware "foodDelivery/internal/core/http/middleware"
+	core_server "foodDelivery/internal/core/http/server"
+	core_logger "foodDelivery/internal/core/logger"
+	"foodDelivery/internal/handlers"
+	handler_basket "foodDelivery/internal/handlers/basket"
+	handler_companies "foodDelivery/internal/handlers/companies"
+	"foodDelivery/internal/handlers/dto"
+	handler_menu "foodDelivery/internal/handlers/menu"
+	handler_orders "foodDelivery/internal/handlers/orders"
+	"foodDelivery/internal/repository/postgres"
+	repository_basket "foodDelivery/internal/repository/postgres/basket"
+	repository_companies "foodDelivery/internal/repository/postgres/companies"
+	repository_menu "foodDelivery/internal/repository/postgres/menu"
+	repository_orders "foodDelivery/internal/repository/postgres/orders"
+	service_basket "foodDelivery/internal/service/basket"
+	service_companies "foodDelivery/internal/service/companies"
+	service_menu "foodDelivery/internal/service/menu"
+	service_orders "foodDelivery/internal/service/orders"
+	service_worker "foodDelivery/internal/service/worker"
+	transport_dto "foodDelivery/internal/transport/http/company"
+	transport_kafka "foodDelivery/internal/transport/kafka"
 	"net"
 	"net/http"
 	"net/http/httptest"
@@ -176,7 +176,7 @@ func setupEnvironment(t *testing.T) *testDeps {
 	kafkaContainer, err := tcontainerkafka.Run(
 		t.Context(),
 		"confluentinc/confluent-local:7.5.0",
-		tcontainerkafka.WithClusterID("avito-kitchen-e2e"),
+		tcontainerkafka.WithClusterID("food-delivery-e2e"),
 	)
 	require.NoError(t, err)
 	testcontainers.CleanupContainer(t, kafkaContainer)

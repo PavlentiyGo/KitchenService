@@ -1,9 +1,9 @@
 package transport_kafka
 
 import (
-	core_messaging "avitoKitchen/internal/core/messaging"
 	"context"
 	"fmt"
+	core_messaging "foodDelivery/internal/core/messaging"
 	"time"
 
 	"github.com/segmentio/kafka-go"

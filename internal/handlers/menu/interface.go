@@ -1,8 +1,8 @@
 package handler_menu
 
 import (
-	"avitoKitchen/internal/core/domain"
 	"context"
+	"foodDelivery/internal/core/domain"
 
 	"github.com/google/uuid"
 )

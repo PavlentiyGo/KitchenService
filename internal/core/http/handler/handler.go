@@ -1,7 +1,7 @@
 package core_http_handler
 
 import (
-	core_response "avitoKitchen/internal/core/http/response"
+	core_response "foodDelivery/internal/core/http/response"
 	"net/http"
 )
 

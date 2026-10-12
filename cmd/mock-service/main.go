@@ -1,11 +1,11 @@
 package main
 
 import (
-	"avitoKitchen/internal/handlers/dto"
 	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
+	"foodDelivery/internal/handlers/dto"
 	"log"
 	"math/rand"
 	"net/http"

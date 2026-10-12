@@ -10,8 +10,8 @@
 package service_menu_test
 
 import (
-	domain "avitoKitchen/internal/core/domain"
 	context "context"
+	domain "foodDelivery/internal/core/domain"
 	reflect "reflect"
 
 	uuid "github.com/google/uuid"

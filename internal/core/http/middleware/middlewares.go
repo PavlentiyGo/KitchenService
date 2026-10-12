@@ -3,10 +3,10 @@ package http_middleware
 import (
 	"context"
 
-	core_errors "avitoKitchen/internal/core/errors"
-	core_response "avitoKitchen/internal/core/http/response"
-	core_logger "avitoKitchen/internal/core/logger"
 	"fmt"
+	core_errors "foodDelivery/internal/core/errors"
+	core_response "foodDelivery/internal/core/http/response"
+	core_logger "foodDelivery/internal/core/logger"
 	"net/http"
 	"time"
 

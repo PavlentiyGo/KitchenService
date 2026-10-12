@@ -1,9 +1,9 @@
 package http_middleware
 
 import (
-	core_response "avitoKitchen/internal/core/http/response"
-	core_logger "avitoKitchen/internal/core/logger"
 	"encoding/json"
+	core_response "foodDelivery/internal/core/http/response"
+	core_logger "foodDelivery/internal/core/logger"
 	"net/http"
 	"net/http/httptest"
 	"testing"

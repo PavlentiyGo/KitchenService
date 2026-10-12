@@ -18,8 +18,8 @@ FROM alpine:3.22
 RUN apk add --no-cache ca-certificates \
     && addgroup -S app \
     && adduser -S -G app app \
-    && mkdir -p /var/log/avito-kitchen \
-    && chown -R app:app /var/log/avito-kitchen
+    && mkdir -p /var/log/food-delivery \
+    && chown -R app:app /var/log/food-delivery
 
 COPY --from=builder --chown=app:app /out/app /usr/local/bin/app
 

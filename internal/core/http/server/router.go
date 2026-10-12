@@ -1,8 +1,8 @@
 package core_server
 
 import (
-	http_middleware "avitoKitchen/internal/core/http/middleware"
 	"fmt"
+	http_middleware "foodDelivery/internal/core/http/middleware"
 	"net/http"
 )
 

@@ -1,14 +1,14 @@
 package handler_basket
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	http_middleware "avitoKitchen/internal/core/http/middleware"
-	"avitoKitchen/internal/core/http/request"
-	core_response "avitoKitchen/internal/core/http/response"
-	core_server "avitoKitchen/internal/core/http/server"
-	"avitoKitchen/internal/handlers/dto"
 	"fmt"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	http_middleware "foodDelivery/internal/core/http/middleware"
+	"foodDelivery/internal/core/http/request"
+	core_response "foodDelivery/internal/core/http/response"
+	core_server "foodDelivery/internal/core/http/server"
+	"foodDelivery/internal/handlers/dto"
 	"net/http"
 
 	"github.com/google/uuid"

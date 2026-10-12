@@ -1,14 +1,14 @@
 package repository_orders_test
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	core_messaging "avitoKitchen/internal/core/messaging"
-	"avitoKitchen/internal/repository"
-	repository_orders "avitoKitchen/internal/repository/postgres/orders"
 	"context"
 	"errors"
 	"fmt"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	core_messaging "foodDelivery/internal/core/messaging"
+	"foodDelivery/internal/repository"
+	repository_orders "foodDelivery/internal/repository/postgres/orders"
 	"testing"
 	"time"
 

@@ -1,7 +1,7 @@
 package models
 
 import (
-	"avitoKitchen/internal/core/domain"
+	"foodDelivery/internal/core/domain"
 )
 
 func CompanyDomainFromModel(company CompanyModel) domain.Company {

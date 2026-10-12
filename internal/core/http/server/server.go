@@ -1,9 +1,9 @@
 package core_server
 
 import (
-	core_config "avitoKitchen/internal/core/config"
-	core_http_handler "avitoKitchen/internal/core/http/handler"
-	http_middleware "avitoKitchen/internal/core/http/middleware"
+	core_config "foodDelivery/internal/core/config"
+	core_http_handler "foodDelivery/internal/core/http/handler"
+	http_middleware "foodDelivery/internal/core/http/middleware"
 	"net/http"
 
 	http_swagger "github.com/swaggo/http-swagger/v2"

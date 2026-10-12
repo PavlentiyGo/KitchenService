@@ -1,8 +1,8 @@
 package service_companies
 
 import (
-	"avitoKitchen/internal/core/domain"
 	"context"
+	"foodDelivery/internal/core/domain"
 	"time"
 
 	"github.com/google/uuid"

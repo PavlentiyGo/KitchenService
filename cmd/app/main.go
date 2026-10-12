@@ -1,28 +1,28 @@
 package main
 
 import (
-	core_config "avitoKitchen/internal/core/config"
-	http_middleware "avitoKitchen/internal/core/http/middleware"
-	core_server "avitoKitchen/internal/core/http/server"
-	core_logger "avitoKitchen/internal/core/logger"
-	"avitoKitchen/internal/handlers"
-	handler_basket "avitoKitchen/internal/handlers/basket"
-	handler_companies "avitoKitchen/internal/handlers/companies"
-	handler_menu "avitoKitchen/internal/handlers/menu"
-	handler_orders "avitoKitchen/internal/handlers/orders"
-	"avitoKitchen/internal/repository/postgres"
-	repository_basket "avitoKitchen/internal/repository/postgres/basket"
-	repository_companies "avitoKitchen/internal/repository/postgres/companies"
-	repository_menu "avitoKitchen/internal/repository/postgres/menu"
-	repository_orders "avitoKitchen/internal/repository/postgres/orders"
-	service_basket "avitoKitchen/internal/service/basket"
-	service_companies "avitoKitchen/internal/service/companies"
-	service_menu "avitoKitchen/internal/service/menu"
-	service_orders "avitoKitchen/internal/service/orders"
-	service_worker "avitoKitchen/internal/service/worker"
-	transport_kafka "avitoKitchen/internal/transport/kafka"
 	"context"
 	"errors"
+	core_config "foodDelivery/internal/core/config"
+	http_middleware "foodDelivery/internal/core/http/middleware"
+	core_server "foodDelivery/internal/core/http/server"
+	core_logger "foodDelivery/internal/core/logger"
+	"foodDelivery/internal/handlers"
+	handler_basket "foodDelivery/internal/handlers/basket"
+	handler_companies "foodDelivery/internal/handlers/companies"
+	handler_menu "foodDelivery/internal/handlers/menu"
+	handler_orders "foodDelivery/internal/handlers/orders"
+	"foodDelivery/internal/repository/postgres"
+	repository_basket "foodDelivery/internal/repository/postgres/basket"
+	repository_companies "foodDelivery/internal/repository/postgres/companies"
+	repository_menu "foodDelivery/internal/repository/postgres/menu"
+	repository_orders "foodDelivery/internal/repository/postgres/orders"
+	service_basket "foodDelivery/internal/service/basket"
+	service_companies "foodDelivery/internal/service/companies"
+	service_menu "foodDelivery/internal/service/menu"
+	service_orders "foodDelivery/internal/service/orders"
+	service_worker "foodDelivery/internal/service/worker"
+	transport_kafka "foodDelivery/internal/transport/kafka"
 	"log"
 	"net/http"
 	"os"
@@ -30,15 +30,15 @@ import (
 	"syscall"
 	"time"
 
-	_ "avitoKitchen/docs"
+	_ "foodDelivery/docs"
 
 	"github.com/go-playground/validator"
 	"go.uber.org/zap"
 )
 
-// @title Avito Kitchen API
+// @title API сервиса доставки еды
 // @version 1.0
-// @description API сервиса Avito Kitchen.
+// @description API для заказа еды из ресторанов, кафе и магазинов.
 func main() {
 	time.Local = time.UTC
 	config := core_config.NewConfigMust()

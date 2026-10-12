@@ -1,9 +1,9 @@
 package service_orders_test
 
 import (
-	"avitoKitchen/internal/core/domain"
-	service_orders "avitoKitchen/internal/service/orders"
 	"context"
+	"foodDelivery/internal/core/domain"
+	service_orders "foodDelivery/internal/service/orders"
 	"testing"
 	"time"
 

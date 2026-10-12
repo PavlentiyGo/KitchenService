@@ -10,9 +10,9 @@
 package service_worker_test
 
 import (
-	domain "avitoKitchen/internal/core/domain"
-	core_messaging "avitoKitchen/internal/core/messaging"
 	context "context"
+	domain "foodDelivery/internal/core/domain"
+	core_messaging "foodDelivery/internal/core/messaging"
 	reflect "reflect"
 
 	uuid "github.com/google/uuid"

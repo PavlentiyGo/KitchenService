@@ -1,10 +1,10 @@
 package core_response
 
 import (
-	core_logger "avitoKitchen/internal/core/logger"
 	"context"
 	"encoding/json"
 	"errors"
+	core_logger "foodDelivery/internal/core/logger"
 	"net/http"
 
 	"go.uber.org/zap"

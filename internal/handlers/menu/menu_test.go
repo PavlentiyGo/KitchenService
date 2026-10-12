@@ -1,15 +1,15 @@
 package handler_menu_test
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_response "avitoKitchen/internal/core/http/response"
-	core_server "avitoKitchen/internal/core/http/server"
-	core_logger "avitoKitchen/internal/core/logger"
-	"avitoKitchen/internal/handlers/dto"
-	handler_menu "avitoKitchen/internal/handlers/menu"
 	"bytes"
 	"encoding/json"
 	"errors"
+	"foodDelivery/internal/core/domain"
+	core_response "foodDelivery/internal/core/http/response"
+	core_server "foodDelivery/internal/core/http/server"
+	core_logger "foodDelivery/internal/core/logger"
+	"foodDelivery/internal/handlers/dto"
+	handler_menu "foodDelivery/internal/handlers/menu"
 	"net/http"
 	"net/http/httptest"
 	"testing"

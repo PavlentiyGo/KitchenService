@@ -1,4 +1,4 @@
-module avitoKitchen
+module foodDelivery
 
 go 1.26.2
 

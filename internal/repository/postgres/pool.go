@@ -1,9 +1,9 @@
 package postgres
 
 import (
-	core_config "avitoKitchen/internal/core/config"
 	"context"
 	"fmt"
+	core_config "foodDelivery/internal/core/config"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 )

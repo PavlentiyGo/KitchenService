@@ -1,10 +1,10 @@
 package transport_kafka
 
 import (
-	core_messaging "avitoKitchen/internal/core/messaging"
 	"context"
 	"encoding/json"
 	"fmt"
+	core_messaging "foodDelivery/internal/core/messaging"
 	"time"
 
 	"github.com/google/uuid"

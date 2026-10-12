@@ -1,7 +1,7 @@
 package transport_kafka
 
 import (
-	core_messaging "avitoKitchen/internal/core/messaging"
+	core_messaging "foodDelivery/internal/core/messaging"
 
 	"github.com/segmentio/kafka-go"
 )

@@ -1,6 +1,6 @@
 package transport_dto
 
-import "avitoKitchen/internal/core/domain"
+import "foodDelivery/internal/core/domain"
 
 func OrderDtoFromDomain(order domain.OrderForSend) OrderDto {
 	products := make([]ProductDto, len(order.Products))

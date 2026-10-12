@@ -1,13 +1,13 @@
 package repository_companies
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	"avitoKitchen/internal/repository"
-	"avitoKitchen/internal/repository/postgres/models"
 	"context"
 	"errors"
 	"fmt"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	"foodDelivery/internal/repository"
+	"foodDelivery/internal/repository/postgres/models"
 	"time"
 
 	"github.com/google/uuid"

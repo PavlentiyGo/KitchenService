@@ -1,12 +1,12 @@
 package repository_basket
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	"avitoKitchen/internal/repository"
-	"avitoKitchen/internal/repository/postgres/models"
 	"context"
 	"fmt"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	"foodDelivery/internal/repository"
+	"foodDelivery/internal/repository/postgres/models"
 
 	"github.com/google/uuid"
 )

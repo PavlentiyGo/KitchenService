@@ -1,13 +1,13 @@
 package repository_basket_test
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	"avitoKitchen/internal/repository"
-	repository_basket "avitoKitchen/internal/repository/postgres/basket"
 	"context"
 	"errors"
 	"fmt"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	"foodDelivery/internal/repository"
+	repository_basket "foodDelivery/internal/repository/postgres/basket"
 	"testing"
 	"time"
 

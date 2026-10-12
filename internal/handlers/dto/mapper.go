@@ -1,7 +1,7 @@
 package dto
 
 import (
-	"avitoKitchen/internal/core/domain"
+	"foodDelivery/internal/core/domain"
 
 	"github.com/google/uuid"
 )

@@ -60,7 +60,7 @@ services:
     build:
       context: .
       dockerfile: cmd/app/Dockerfile
-    container_name: avito_kitchen_app
+    container_name: food_delivery_app
     env_file:
       - .env
     environment:
@@ -69,11 +69,11 @@ services:
       POSTGRES_PORT: 5432
       KAFKA_BROKERS: kafka:19092
       LOGGER_LEVEL: ${LOGGER_LEVEL:-DEBUG}
-      LOGGER_FOLDER: /var/log/avito-kitchen
+      LOGGER_FOLDER: /var/log/food-delivery
     ports:
       - "8080:8080"
     volumes:
-      - app_logs:/var/log/avito-kitchen
+      - app_logs:/var/log/food-delivery
     depends_on:
       migrate:
         condition: service_completed_successfully
@@ -90,7 +90,7 @@ services:
     build:
       context: .
       dockerfile: cmd/mock-service/Dockerfile
-    container_name: avito_kitchen_mock
+    container_name: food_delivery_mock
     environment:
       MOCK_REQUEST_TIMEOUT: ${MOCK_REQUEST_TIMEOUT:-5s}
       MOCK_FAILURE_PERCENT: ${MOCK_FAILURE_PERCENT:-80}

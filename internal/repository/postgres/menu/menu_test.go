@@ -1,13 +1,13 @@
 package repository_menu_test
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	"avitoKitchen/internal/repository"
-	repository_menu "avitoKitchen/internal/repository/postgres/menu"
 	"context"
 	"errors"
 	"fmt"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	"foodDelivery/internal/repository"
+	repository_menu "foodDelivery/internal/repository/postgres/menu"
 	"testing"
 	"time"
 

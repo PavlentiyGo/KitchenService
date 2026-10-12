@@ -1,7 +1,7 @@
 package core_messaging
 
 import (
-	"avitoKitchen/internal/core/domain"
+	"foodDelivery/internal/core/domain"
 	"time"
 
 	"github.com/google/uuid"

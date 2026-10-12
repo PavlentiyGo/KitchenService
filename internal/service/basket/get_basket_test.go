@@ -1,10 +1,10 @@
 package service_basket_test
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
 	"context"
 	"errors"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
 	"testing"
 
 	"github.com/google/uuid"

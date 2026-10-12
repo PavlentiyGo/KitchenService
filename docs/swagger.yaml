@@ -280,8 +280,8 @@ definitions:
     type: object
 info:
   contact: {}
-  description: API сервиса Avito Kitchen.
-  title: Avito Kitchen API
+  description: API для заказа еды из ресторанов, кафе и магазинов.
+  title: API сервиса доставки еды
   version: "1.0"
 paths:
   /api/v1/companies:

@@ -1,9 +1,9 @@
 package service_worker
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_messaging "avitoKitchen/internal/core/messaging"
 	"context"
+	"foodDelivery/internal/core/domain"
+	core_messaging "foodDelivery/internal/core/messaging"
 
 	"github.com/google/uuid"
 )

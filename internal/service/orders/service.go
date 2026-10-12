@@ -1,10 +1,10 @@
 package service_orders
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
 	"context"
 	"fmt"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
 
 	"github.com/google/uuid"
 )

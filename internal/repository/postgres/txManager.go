@@ -1,11 +1,11 @@
 package postgres
 
 import (
-	core_logger "avitoKitchen/internal/core/logger"
-	"avitoKitchen/internal/repository"
 	"context"
 	"errors"
 	"fmt"
+	core_logger "foodDelivery/internal/core/logger"
+	"foodDelivery/internal/repository"
 	"time"
 
 	"github.com/jackc/pgx/v5"

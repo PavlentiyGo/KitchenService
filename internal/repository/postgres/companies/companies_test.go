@@ -1,13 +1,13 @@
 package repository_companies_test
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	"avitoKitchen/internal/repository"
-	repository_companies "avitoKitchen/internal/repository/postgres/companies"
 	"context"
 	"errors"
 	"fmt"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	"foodDelivery/internal/repository"
+	repository_companies "foodDelivery/internal/repository/postgres/companies"
 	"testing"
 	"time"
 

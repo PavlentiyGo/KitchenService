@@ -1,13 +1,13 @@
 package repository_menu
 
 import (
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	"avitoKitchen/internal/repository"
-	"avitoKitchen/internal/repository/postgres/models"
 	"context"
 	"errors"
 	"fmt"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	"foodDelivery/internal/repository"
+	"foodDelivery/internal/repository/postgres/models"
 
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5"

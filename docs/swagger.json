@@ -1,8 +1,8 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "API сервиса Avito Kitchen.",
-        "title": "Avito Kitchen API",
+        "description": "API для заказа еды из ресторанов, кафе и магазинов.",
+        "title": "API сервиса доставки еды",
         "contact": {},
         "version": "1.0"
     },

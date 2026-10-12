@@ -38,7 +38,7 @@ skinparam note {
 }
 
 title
-  <size:25><color:#1769AA><b>Авито.Кухня</b></color></size>
+  <size:25><color:#1769AA><b>Сервис доставки еды</b></color></size>
   <size:20><b>CJM U2 — Формирование и редактирование корзины</b></size>
   <size:13><color:#68788D>Путь пользователя от выбора товара до готовой к оформлению корзины</color></size>
 end title

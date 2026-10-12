@@ -10,8 +10,8 @@
 package service_companies_test
 
 import (
-	domain "avitoKitchen/internal/core/domain"
 	context "context"
+	domain "foodDelivery/internal/core/domain"
 	reflect "reflect"
 	time "time"
 

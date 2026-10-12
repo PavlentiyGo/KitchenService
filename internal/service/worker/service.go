@@ -1,17 +1,17 @@
 package service_worker
 
 import (
-	core_config "avitoKitchen/internal/core/config"
-	"avitoKitchen/internal/core/domain"
-	core_errors "avitoKitchen/internal/core/errors"
-	core_logger "avitoKitchen/internal/core/logger"
-	core_messaging "avitoKitchen/internal/core/messaging"
-	transport_dto "avitoKitchen/internal/transport/http/company"
 	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
+	core_config "foodDelivery/internal/core/config"
+	"foodDelivery/internal/core/domain"
+	core_errors "foodDelivery/internal/core/errors"
+	core_logger "foodDelivery/internal/core/logger"
+	core_messaging "foodDelivery/internal/core/messaging"
+	transport_dto "foodDelivery/internal/transport/http/company"
 	"net/http"
 	"time"
 

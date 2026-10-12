@@ -1,8 +1,8 @@
 package dto_test
 
 import (
-	"avitoKitchen/internal/core/domain"
-	"avitoKitchen/internal/handlers/dto"
+	"foodDelivery/internal/core/domain"
+	"foodDelivery/internal/handlers/dto"
 	"testing"
 	"time"
 

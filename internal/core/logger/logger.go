@@ -1,9 +1,9 @@
 package core_logger
 
 import (
-	core_config "avitoKitchen/internal/core/config"
 	"context"
 	"fmt"
+	core_config "foodDelivery/internal/core/config"
 	"os"
 	"path"
 	"time"

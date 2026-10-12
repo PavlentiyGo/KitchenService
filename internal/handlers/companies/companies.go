@@ -1,12 +1,12 @@
 package handler_companies
 
 import (
-	"avitoKitchen/internal/core/domain"
-	http_middleware "avitoKitchen/internal/core/http/middleware"
-	"avitoKitchen/internal/core/http/request"
-	core_response "avitoKitchen/internal/core/http/response"
-	core_server "avitoKitchen/internal/core/http/server"
-	"avitoKitchen/internal/handlers/dto"
+	"foodDelivery/internal/core/domain"
+	http_middleware "foodDelivery/internal/core/http/middleware"
+	"foodDelivery/internal/core/http/request"
+	core_response "foodDelivery/internal/core/http/response"
+	core_server "foodDelivery/internal/core/http/server"
+	"foodDelivery/internal/handlers/dto"
 	"net/http"
 )
 

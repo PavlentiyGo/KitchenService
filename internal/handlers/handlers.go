@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	core_server "avitoKitchen/internal/core/http/server"
+	core_server "foodDelivery/internal/core/http/server"
 )
 
 type Handler interface {
